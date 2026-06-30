@@ -55,6 +55,9 @@ pub trait HashBased: PostQuantum {}
 /// Marker for PQC algorithms based on Error-Correcting Codes (e.g., McEliece).
 pub trait CodeBased: PostQuantum {}
 
+/// Marker for Key Wrap algorithms.
+pub trait KeyWrap {}
+
 /// Marker for Cipher Block Chaining (CBC) mode.
 pub trait Cbc {}
 

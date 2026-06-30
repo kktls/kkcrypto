@@ -12,6 +12,7 @@ pub mod dsa;
 pub mod ffdhe;
 pub mod gost;
 pub mod kdf;
+pub mod key_wrap;
 pub mod mac;
 pub mod md5;
 pub mod pqc_kem;

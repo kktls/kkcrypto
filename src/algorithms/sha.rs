@@ -15,6 +15,8 @@ pub const SHA256_OUT_LEN: usize = 32;
 pub const SHA384_OUT_LEN: usize = 48;
 /// Output length for SHA-512 / SHA3-512 in bytes (512 bits).
 pub const SHA512_OUT_LEN: usize = 64;
+/// Output length for SHA-512/256 in bytes (256 bits).
+pub const SHA512_256_OUT_LEN: usize = 32;
 
 /// SHA-1 hash function.
 ///
@@ -40,6 +42,11 @@ pub trait Sha384: base::Digest<SHA384_OUT_LEN> + markers::Hash {}
 ///
 /// Defined in [NIST FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final).
 pub trait Sha512: base::Digest<SHA512_OUT_LEN> + markers::Hash {}
+
+/// SHA-512/256 hash function.
+///
+/// Defined in [NIST FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final).
+pub trait Sha512_256: base::Digest<SHA512_256_OUT_LEN> + markers::Hash {}
 
 /// SHA3-256 hash function.
 ///

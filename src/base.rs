@@ -218,3 +218,12 @@ pub trait VariableKeyInit {
     where
         Self: Sized;
 }
+
+/// Key Wrap algorithm for protecting cryptographic keys.
+pub trait KeyWrap {
+    /// Wraps the keying material, returning the wrapped ciphertext.
+    fn wrap(&self, plaintext: &[u8]) -> Result<Vec<u8>>;
+
+    /// Unwraps the ciphertext, returning the original keying material.
+    fn unwrap(&self, ciphertext: &[u8]) -> Result<Vec<u8>>;
+}

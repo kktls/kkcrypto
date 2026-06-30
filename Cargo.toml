@@ -1,20 +1,17 @@
-[workspace]
-resolver = "3"
-members  = [ "crates/*" ]
+[package]
+name        = "kkcrypto"
+description = "Set of cryptographic trait abstractions."
+version     = "1.0.0"
+license     = "MIT-0"
+publish     = true
+authors     = [ "loncothad <me@loncothad.cc>" ]
+repository  = "https://github.com/kktls/kkcrypto"
+edition     = "2024"
 
-[workspace.package]
-publish    = true
-authors    = [ "loncothad <me@loncothad.cc>" ]
-repository = "https://github.com/kktls/kkcrypto"
-edition    = "2024"
-license    = "MIT OR Apache-2.0"
-
-[workspace.dependencies]
-
-[workspace.lints.rust]
+[lints.rust]
 non_ascii_idents = "forbid"
 
-[workspace.lints.clippy]
+[lints.clippy]
 allow_attributes                = "warn"
 allow_attributes_without_reason = "deny"
 arithmetic_side_effects         = "warn"

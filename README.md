@@ -1,4 +1,4 @@
-# kkcrypto-traits
+# kkcrypto
 
 Standardized cryptography traits for Rust designed to decouple operational
 logic from concrete implementations, facilitating seamless backend swapping

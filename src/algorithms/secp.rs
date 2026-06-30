@@ -21,8 +21,7 @@ pub trait Secp256r1Ecdh:
 {
 }
 
-/// ECDSA over the SECG secp256k1 curve (Koblitz curve widely used in
-/// blockchain).
+/// ECDSA over the SECG secp256k1 curve.
 ///
 /// Defined in [SEC 2: Recommended Elliptic Curve Domain Parameters](https://www.secg.org/sec2-v2.pdf).
 pub trait Secp256k1Ecdsa:

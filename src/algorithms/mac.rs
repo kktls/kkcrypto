@@ -98,6 +98,4 @@ pub trait CmacAes192: base::KeyInit<24> + base::Mac<CMAC_AES_TAG_LEN> + markers:
 pub trait CmacAes256: base::KeyInit<32> + base::Mac<CMAC_AES_TAG_LEN> + markers::Symmetric + markers::Mac {}
 
 /// CMAC using 3-key Triple DES (DES-EDE3).
-/// For legacy interoperability only; new designs must use an AES-based
-/// algorithm.
 pub trait CmacTdes: base::KeyInit<24> + base::Mac<CMAC_TDES_TAG_LEN> + markers::Symmetric + markers::Mac {}

@@ -183,7 +183,7 @@ pub trait PublicKeyEncryption {
     fn decrypt(sk: &Self::PrivateKey, ct: &[u8]) -> Result<Vec<u8>>;
 }
 
-/// Key Derivation Function (KDF).
+/// HMAC-based Key Derivation Function (HKDF).
 pub trait Kdf {
     /// Extracts a fixed-length pseudo-random key (PRK) from input keying
     /// material (IKM) and a salt.
@@ -191,6 +191,18 @@ pub trait Kdf {
     /// Expands the extracted PRK using protocol-specific info to generate the
     /// output keying material (OKM).
     fn expand(prk: &[u8], info: &[u8], okm: &mut [u8]) -> Result<()>;
+}
+
+/// Password-Based Key Derivation Function (e.g., PBKDF2).
+pub trait PasswordBasedKdf {
+    /// Derives key material from a password, salt, and iteration count.
+    fn derive(password: &[u8], salt: &[u8], iterations: u32, output: &mut [u8]) -> Result<()>;
+}
+
+/// Single-step or Key-Based Key Derivation Function (SSKDF / KBKDF).
+pub trait StepKdf {
+    /// Derives key material from a secret and context info.
+    fn derive(secret: &[u8], info: &[u8], output: &mut [u8]) -> Result<()>;
 }
 
 /// Pseudorandom Function (PRF).

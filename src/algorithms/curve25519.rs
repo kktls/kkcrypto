@@ -1,50 +1,39 @@
-//! ChaCha family stream ciphers and AEADs.
+//! Elliptic curve cryptography over Curve25519 and Curve448.
 
 use crate::{
     base,
     markers,
 };
 
-/// Length of a ChaCha20 / XChaCha20 key in bytes (256 bits).
-pub const CHACHA_KEY_LEN: usize = 32;
+/// Length of an Ed25519 or X25519 public key in bytes (256 bits).
+pub const CURVE25519_PUBKEY_LEN: usize = 32;
 
-/// Length of a standard IETF ChaCha20 nonce in bytes (96 bits).
-pub const CHACHA_NONCE_LEN: usize = 12;
+/// Length of an Ed448 or X448 public key in bytes (448 bits rounded to 57
+/// bytes).
+pub const CURVE448_PUBKEY_LEN: usize = 57;
 
-/// Length of an XChaCha20 extended nonce in bytes (192 bits).
-pub const XCHACHA_NONCE_LEN: usize = 24;
-
-/// Length of a Poly1305 authentication tag in bytes (128 bits).
-pub const POLY1305_TAG_LEN: usize = 16;
-
-/// ChaCha20 Stream Cipher.
+/// Ed25519 digital signature scheme.
 ///
-/// Defined in [RFC 8439](https://datatracker.ietf.org/doc/html/rfc8439).
-pub trait ChaCha20:
-    base::KeyInit<CHACHA_KEY_LEN> + base::StreamCipher<CHACHA_NONCE_LEN> + markers::Symmetric + markers::StreamCipher
+/// Defined in [RFC 8032](https://datatracker.ietf.org/doc/html/rfc8032).
+pub trait Ed25519: base::SignatureScheme + markers::Asymmetric + markers::Signature + markers::EllipticCurve {}
+
+/// Ed448 digital signature scheme.
+///
+/// Defined in [RFC 8032](https://datatracker.ietf.org/doc/html/rfc8032).
+pub trait Ed448: base::SignatureScheme + markers::Asymmetric + markers::Signature + markers::EllipticCurve {}
+
+/// X25519 key exchange mechanism.
+///
+/// Defined in [RFC 7748](https://datatracker.ietf.org/doc/html/rfc7748).
+pub trait X25519:
+    base::KeyExchange + markers::Asymmetric + markers::KeyExchange + markers::EllipticCurve + markers::DiffieHellman
 {
 }
 
-/// XChaCha20 Stream Cipher (extended 192-bit nonce).
+/// X448 key exchange mechanism.
 ///
-/// Defined in [Draft RFC: XChaCha](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-xchacha).
-pub trait XChaCha20:
-    base::KeyInit<CHACHA_KEY_LEN> + base::StreamCipher<XCHACHA_NONCE_LEN> + markers::Symmetric + markers::StreamCipher
-{
-}
-
-/// ChaCha20-Poly1305 AEAD.
-///
-/// Defined in [RFC 8439](https://datatracker.ietf.org/doc/html/rfc8439).
-pub trait ChaCha20Poly1305:
-    base::KeyInit<CHACHA_KEY_LEN> + base::Aead<CHACHA_NONCE_LEN, POLY1305_TAG_LEN> + markers::Symmetric + markers::Aead
-{
-}
-
-/// XChaCha20-Poly1305 AEAD (extended 192-bit nonce).
-///
-/// Defined in [Draft RFC: XChaCha](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-xchacha).
-pub trait XChaCha20Poly1305:
-    base::KeyInit<CHACHA_KEY_LEN> + base::Aead<XCHACHA_NONCE_LEN, POLY1305_TAG_LEN> + markers::Symmetric + markers::Aead
+/// Defined in [RFC 7748](https://datatracker.ietf.org/doc/html/rfc7748).
+pub trait X448:
+    base::KeyExchange + markers::Asymmetric + markers::KeyExchange + markers::EllipticCurve + markers::DiffieHellman
 {
 }

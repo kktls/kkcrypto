@@ -1,5 +1,6 @@
 [package]
-name                 = "kkcrypto-traits"
+name                 = "kkcrypto"
+description          = "Set of cryptographic trait abstractions."
 version              = "1.0.0"
 license              = "MIT-0"
 publish.workspace    = true

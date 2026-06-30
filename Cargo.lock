@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "kkcrypto-traits"
+name = "kkcrypto"
 version = "1.0.0"

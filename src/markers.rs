@@ -63,3 +63,6 @@ pub trait Cbc {}
 
 /// Marker for Counter with CBC-MAC (CCM) mode.
 pub trait Ccm {}
+
+/// Marker for tightly coupled algorithm combinations and protocol suites.
+pub trait Combo {}
